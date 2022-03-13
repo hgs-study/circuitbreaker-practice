@@ -1,0 +1,26 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState : 10s
+
+    instances:
+      hgsssss:
+        baseConfig: default
+
+  # 설정의 의미는 총 30초 동안 10초 간격으로 서비스 호출을 3번한다는 의미이다.
+  retry:
+    configs:
+      default:
+        maxRetryAttempts : 3 #최대 시도 가능 횟수 (기본값 3)
+        waitDuration : 10s   # 재시도 호출 간격 (기본값 500m/s)
+        retryExceptions : # 리트라이할 익셉션 정의
+          - java.lang.IllegalArgumentException
+          - org.springframework.web.reactive.function.client.WebClientResponseException
+          - org.springframework.web.reactive.function.client.WebClientResponseException$InternalServerError
+          # 여러개 정의 가능
+    instances:
+      hgsssss:
+        baseConfig: default
