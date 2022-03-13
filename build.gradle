@@ -1,0 +1,26 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'   // Webflux
+    implementation 'org.springframework.boot:spring-boot-starter-aop'       // Resilience4j의 어노테이션 방식을 사용하기 위해 필요
+    implementation "io.github.resilience4j:resilience4j-spring-boot2:1.7.1" // Resilience4j
+    implementation 'io.github.resilience4j:resilience4j-reactor:1.7.1'      // Reactive 환경에서 Resilience4j를 사용 하기 위해 필요
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+test {
+    useJUnitPlatform()
+}
