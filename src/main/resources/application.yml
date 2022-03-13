@@ -2,7 +2,7 @@ resilience4j:
   circuitbreaker:
     configs:
       default:
-        slidingWindowSize: 5
+        slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState : 10s
 

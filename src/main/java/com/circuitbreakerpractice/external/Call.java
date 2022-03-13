@@ -40,5 +40,6 @@ public class Call {
             log.info("illegalException 발생");
             throw new IllegalArgumentException("IllegalArgumentException 발생");
         }
+        log.info("success");
     }
 }
