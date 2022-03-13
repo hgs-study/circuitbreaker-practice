@@ -15,12 +15,11 @@ resilience4j:
     configs:
       default:
         maxRetryAttempts : 3 #최대 시도 가능 횟수 (기본값 3)
-        waitDuration : 10s   # 재시도 호출 간격 (기본값 500m/s)
+        waitDuration : 2s   # 재시도 호출 간격 (기본값 500m/s)
         retryExceptions : # 리트라이할 익셉션 정의
           - java.lang.IllegalArgumentException
           - org.springframework.web.reactive.function.client.WebClientResponseException
           - org.springframework.web.reactive.function.client.WebClientResponseException$InternalServerError
-          # 여러개 정의 가능
     instances:
       hgsssss:
         baseConfig: default

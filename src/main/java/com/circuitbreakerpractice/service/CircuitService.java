@@ -22,16 +22,15 @@ public class CircuitService {
         return call.getApiHello(name);
     }
 
-    @CircuitBreaker(name = DEFAULT_NAME, fallbackMethod = ILLEGAL_FALLBACK_DEFAULT)
-    @Retry(name = DEFAULT_NAME)
-    public Mono<String> getIllegal(){
+    @CircuitBreaker(name = DEFAULT_NAME)
+    @Retry(name = DEFAULT_NAME, fallbackMethod = ILLEGAL_FALLBACK_DEFAULT)
+    public void getIllegal(){
         log.info("getIllegal start");
-        return call.getApiIllegal();
+        call.illegalException();
     }
 
-    private Mono<String> illegalFallback(Throwable t){
-        log.error("illegalFallback Fallback : "+t.getClass()+" / "+ t.getMessage());
-        return Mono.just("[Retry] retry 중 오류");
+    private void illegalFallback(Throwable t){
+        log.error("Retry 중 오류");
     }
 
     private Mono<String> helloFallback(String name, Throwable t){

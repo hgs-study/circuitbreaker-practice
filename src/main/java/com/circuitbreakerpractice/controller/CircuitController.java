@@ -20,7 +20,7 @@ public class CircuitController {
     }
 
     @GetMapping("/illegal")
-    public Mono<String> getIllegal(){
-        return circuitService.getIllegal();
+    public void getIllegal(){
+        circuitService.getIllegal();
     }
 }
