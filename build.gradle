@@ -19,6 +19,8 @@ dependencies {
     implementation "io.github.resilience4j:resilience4j-spring-boot2:1.7.0" // Resilience4j
     implementation 'io.github.resilience4j:resilience4j-reactor:1.7.0'      // Reactive 환경에서 Resilience4j를 사용 하기 위해 필요
 
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

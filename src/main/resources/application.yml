@@ -1,11 +1,24 @@
+management:
+  health:
+    circuitbreakers:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 resilience4j:
   circuitbreaker:
     configs:
       default:
+        slidingWindowType : COUNT_BASED
         slidingWindowSize: 10
         failureRateThreshold: 50
         waitDurationInOpenState : 10s
-
+        registerHealthIndicator : true
     instances:
       hgsssss:
         baseConfig: default
